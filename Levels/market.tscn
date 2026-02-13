@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbqge2rw3pt18"]
+
+[sub_resource type="Environment" id="Environment_h3lij"]
+background_mode = 1
+background_color = Color(0.31018764, 0.6915024, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_color = Color(3.6699697e-07, 0.32968888, 3.3691526e-07, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hboqi"]
+material = SubResource("StandardMaterial3D_lquwl")
+size = Vector2(50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ceqg"]
+size = Vector3(50, 1, 50)
+
+[node name="Market" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h3lij")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_hboqi")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_8ceqg")

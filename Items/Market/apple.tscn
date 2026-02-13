@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmun4jr8xxww1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hvunl"]
+radius = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_nlxgf"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_088db"]
+albedo_color = Color(0.5660922, 1.7688051e-06, 3.3691526e-07, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_15n3j"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tosuq"]
+albedo_color = Color(0.40733504, 0.23933864, 0.07746612, 1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ny0eb"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Apple" type="RigidBody3D"]
+continuous_cd = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_hvunl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_nlxgf")
+surface_material_override/0 = SubResource("StandardMaterial3D_088db")
+
+[node name="Stem" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.12695852, 0)
+mesh = SubResource("CylinderMesh_15n3j")
+surface_material_override/0 = SubResource("StandardMaterial3D_tosuq")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ny0eb")
