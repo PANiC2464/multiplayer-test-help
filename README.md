@@ -1,5 +1,8 @@
 # multiplayer-test-help
 
+# Using GodotSteam version 4.5.1
+https://codeberg.org/godotsteam/multiplayerpeer/releases <--- THIS specific version
+
 I really need help with this. I'm new to making multiplayer.
 
 I followed this tutorial: https://youtu.be/FHBJ-auzaeM but now for whatever reason it just won't work.
